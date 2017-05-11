@@ -1,0 +1,25 @@
+{% extends 'home/base.html' %}
+{% block content %}
+
+    <form method="post">
+        {% csrf_token %}
+            <label for="usr"> First Name</label><input type="text" name="first_name" class="form-control" id="usr">
+            <button type="submit" value="Submit" id= "save" name="button" class="save btn btn-default">Submit</button>
+    </form>
+
+    <button type="submit" value="Submit" id= "id_button" name="button" class="btn btn-success">Press Me Please!</button>
+
+    <script>
+
+        $('#id_button').click(function(){
+            $.ajax({
+                type:'GET',
+                url: this.href,
+                success: function () {
+                    $('#id_button').html("Hello World!");
+                }
+            });
+
+        });
+    </script>
+{% endblock %}
